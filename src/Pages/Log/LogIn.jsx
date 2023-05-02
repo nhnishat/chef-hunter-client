@@ -1,16 +1,46 @@
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Auth/AuthProvider';
 
 const LogIn = () => {
+	const { singIn } = useContext(AuthContext);
 	const [showPassword, setShowPassword] = useState(false);
+	const [error, setError] = useState('');
+	const emailRef = useRef();
+
+	const handleLogIn = (event) => {
+		event.preventDefault();
+		const form = event.target;
+		// const name = form.name.value;
+		const email = form.email.value;
+		// const photo = form.photo.value;
+		const password = form.password.value;
+		console.log(email, password);
+		if (password.length < 6) {
+			return setError(`password don't match`);
+		}
+		singIn(email, password)
+			.then((result) => {
+				const createdUser = result.user;
+				form.reset();
+				setError('');
+				console.log(createdUser);
+			})
+			.catch((error) => {
+				setError(error.message);
+			});
+	};
+	const handleResetPassword = (event) => {
+		console.log(emailRef.current);
+	};
 
 	return (
 		<Container className="w-25 mx-auto mt-5 p-5">
 			<h1 className="mb-4 text-center">Log in</h1>
-			<Form>
+			<Form onSubmit={handleLogIn}>
 				<Form.Group className="mb-3" controlId="formBasicEmail">
 					<Form.Label>Email address</Form.Label>
 					<Form.Control
@@ -18,6 +48,7 @@ const LogIn = () => {
 						name="email"
 						placeholder="Enter email"
 						required
+						ref={emailRef}
 					/>
 				</Form.Group>
 
@@ -46,8 +77,9 @@ const LogIn = () => {
 					</Link>
 				</div>
 				<p>
-					<Link>Forget Password</Link>
+					<Link onClick={handleResetPassword}>Forget Password</Link>
 				</p>
+				<p className="text-danger">{error}</p>
 				<Button variant="primary" type="submit" className="my-2">
 					Login
 				</Button>
