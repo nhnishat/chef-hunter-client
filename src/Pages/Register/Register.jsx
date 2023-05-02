@@ -1,3 +1,5 @@
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext, useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -5,6 +7,7 @@ import { AuthContext } from '../../Auth/AuthProvider';
 
 const Register = () => {
 	const [accepted, setAccepted] = useState(false);
+	const [showPassword, setShowPassword] = useState(false);
 	const [error, setError] = useState('');
 	const { createUser, currentUser, updateProfileData } =
 		useContext(AuthContext);
@@ -73,18 +76,32 @@ const Register = () => {
 						required
 					/>
 				</Form.Group>
-
-				<Form.Group className="mb-3" controlId="formBasicPassword">
-					<Form.Label>
-						Password <small>( password minimum 6 characters)</small>
-					</Form.Label>
-					<Form.Control
-						type="password"
-						name="password"
-						placeholder="Password"
-						required
-					/>
-				</Form.Group>
+				<div className="position-relative mb-2">
+					<Form.Group className="mb-3" controlId="formBasicPassword">
+						<Form.Label>
+							Password <small>( password minimum 6 characters)</small>
+						</Form.Label>
+						<Form.Control
+							type={showPassword ? 'text' : 'password'}
+							name="password"
+							placeholder="Password"
+							required
+						/>
+					</Form.Group>
+					<Link
+						onClick={() => {
+							setShowPassword(!showPassword);
+						}}
+						className="bottom-0 end-0 p-2 text-black position-absolute"
+						password="true"
+					>
+						{showPassword ? (
+							<FontAwesomeIcon icon={faEyeSlash} />
+						) : (
+							<FontAwesomeIcon icon={faEye}></FontAwesomeIcon>
+						)}
+					</Link>
+				</div>
 				<p className="text-danger">{error}</p>
 
 				<Form.Group className="mb-3" controlId="formBasicCheckbox">

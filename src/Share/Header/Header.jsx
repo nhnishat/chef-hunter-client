@@ -16,24 +16,26 @@ const Header = () => {
 	return (
 		<Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
 			<Container>
-				<Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+				<Link to="/" className="text-white text-decoration-none">
+					CHEF HUNTER
+				</Link>
 				<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 				<Navbar.Collapse id="responsive-navbar-nav">
-					<Nav className="me-auto">
-						<Nav.Link href="#features">Features</Nav.Link>
-						<Nav.Link href="#pricing">Pricing</Nav.Link>
+					<Nav className="ms-auto" style={{ marginRight: '470px' }}>
+						<Nav.Link to="/">About</Nav.Link>
+						<Nav.Link to="/">Blogs</Nav.Link>
 					</Nav>
-					<Nav className="d-flex justify-content-center align-items-center">
+					<Nav>
 						<div>
 							{currentUser && currentUser.photoURL && (
-								<Nav.Link href="#deets">
+								<Nav.Link>
 									<img
 										src={currentUser.photoURL}
 										alt="Profile"
 										title={currentUser.displayName}
 										style={{
-											width: '60px',
-											height: '60px',
+											width: '30px',
+											height: '30px',
 											borderRadius: '50%',
 										}}
 									/>

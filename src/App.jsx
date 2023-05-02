@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Outlet } from 'react-router-dom';
 import { AuthContext } from './Auth/AuthProvider';
+import Footer from './Share/Footer/Footer';
 import Header from './Share/Header/Header';
 
 const App = () => {
@@ -12,6 +13,7 @@ const App = () => {
 			{/* <img src={currentUser.photoURL} alt="" /> */}
 			<Header />
 			<Outlet />
+			<Footer />
 		</div>
 	);
 };
