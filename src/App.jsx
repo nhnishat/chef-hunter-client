@@ -1,13 +1,16 @@
 import React, { useContext } from 'react';
 import { Outlet } from 'react-router-dom';
 import { AuthContext } from './Auth/AuthProvider';
+import Header from './Share/Header/Header';
 
 const App = () => {
-	const { user } = useContext(AuthContext);
-	console.log(user);
+	const { currentUser } = useContext(AuthContext);
+	console.log(currentUser);
 	return (
 		<div>
-			Header
+			{/* <h1>{currentUser && currentUser.displayName} </h1> */}
+			{/* <img src={currentUser.photoURL} alt="" /> */}
+			<Header />
 			<Outlet />
 		</div>
 	);

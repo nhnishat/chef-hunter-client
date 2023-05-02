@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Auth/AuthProvider';
 
 const LogIn = () => {
-	const { singIn } = useContext(AuthContext);
+	const { singIn, resetPassword } = useContext(AuthContext);
 	const [showPassword, setShowPassword] = useState(false);
 	const [error, setError] = useState('');
 	const emailRef = useRef();
@@ -33,12 +33,22 @@ const LogIn = () => {
 				setError(error.message);
 			});
 	};
-	const handleResetPassword = (event) => {
-		console.log(emailRef.current);
+	const handleResetPassword = () => {
+		const email = emailRef.current.value;
+		if (!email) {
+			alert('please provide your email address to reset password');
+		}
+		resetPassword(email)
+			.then(() => {
+				alert('please check your email');
+			})
+			.catch((error) => {
+				setError(error.message);
+			});
 	};
 
 	return (
-		<Container className="w-25 mx-auto mt-5 p-5">
+		<Container className="mx-auto mt-5 p-5">
 			<h1 className="mb-4 text-center">Log in</h1>
 			<Form onSubmit={handleLogIn}>
 				<Form.Group className="mb-3" controlId="formBasicEmail">
@@ -77,7 +87,7 @@ const LogIn = () => {
 					</Link>
 				</div>
 				<p>
-					<Link onClick={handleResetPassword}>Forget Password</Link>
+					<Link onClick={handleResetPassword}>Forget Password?</Link>
 				</p>
 				<p className="text-danger">{error}</p>
 				<Button variant="primary" type="submit" className="my-2">
