@@ -4,8 +4,8 @@ import './Footer.css';
 
 const Footer = () => {
 	return (
-		<div className='"w-full bg-black mt-5'>
-			<Container className=" mt-5">
+		<div className='"w-full bg-black my-5'>
+			<Container className=" my-5">
 				<div className="footer">
 					<div className="w-3/3 mt-3">
 						<h2 className="mb-3 text-white">Chef Hunter</h2>
@@ -45,7 +45,7 @@ const Footer = () => {
 				<div className="text-white">
 					<hr />
 				</div>
-				<div className="flex justify-between my-container">
+				<div className="d-flex justify-content-between">
 					<p className="mb-2 text-white">
 						@2023 CareerHub. All Rights Reserved
 					</p>

@@ -28,6 +28,10 @@ const Routers = createBrowserRouter([
 				path: 'terms',
 				element: <Trams />,
 			},
+			// {
+			// 	path: '/chefs',
+			// 	element: <ShowChef />,
+			// },
 		],
 	},
 ]);
