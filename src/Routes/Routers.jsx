@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import App from '../App';
-import Carousel from '../Pages/Home/Carousel';
+import HomeLayout from '../Layouts/HomeLayout';
 import LogIn from '../Pages/Log/LogIn';
 import Register from '../Pages/Register/Register';
 import Trams from '../Pages/Trams/Trams';
@@ -14,7 +14,7 @@ const Routers = createBrowserRouter([
 		children: [
 			{
 				path: '/',
-				element: <Carousel />,
+				element: <HomeLayout />,
 			},
 			{
 				path: '/login',

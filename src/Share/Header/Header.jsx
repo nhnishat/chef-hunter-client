@@ -14,7 +14,13 @@ const Header = () => {
 	};
 
 	return (
-		<Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+		<Navbar
+			collapseOnSelect
+			expand="lg"
+			bg="dark"
+			variant="dark"
+			className="shadow-lg"
+		>
 			<Container>
 				<Link to="/" className="text-white text-decoration-none">
 					CHEF HUNTER
