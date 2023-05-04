@@ -22,7 +22,7 @@ const Chef = () => {
 	};
 	return (
 		<Container>
-			<h3 className="text-center my-5">{chef.name} Data</h3>
+			<h3 className="text-center my-5">{chef.name} BIO DATA</h3>
 			<div className="d-flex flex-column flex-sm-row justify-content-center align-items-center mt-4 gap-5 justify-content-between shadow-lg rounded-3 mt-5">
 				<div>
 					<img
