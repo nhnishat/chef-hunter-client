@@ -7,7 +7,7 @@ const PrivateRoute = ({ children }) => {
 	const { currentUser, loading } = useContext(AuthContext);
 
 	const location = useLocation();
-	console.log(location);
+	// console.log(location);
 	if (loading) {
 		return <Spinner animation="border" variant="danger" />;
 	}

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Card, Col, Container, Row, Spinner } from 'react-bootstrap';
 import { useLoaderData } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const Chef = () => {
 	const chef = useLoaderData();
 	const [isFavoriteAdded, setIsFavoriteAdded] = useState(false);
-	console.log(chef);
+	// console.log(chef);
 	if (!chef) {
 		return (
 			<Spinner
