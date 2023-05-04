@@ -17,18 +17,16 @@ const Carousels = () => {
 								alt="First slide"
 							/>
 							<Carousel.Caption>
-								<h3>First slide label</h3>
-								<p>
-									Nulla vitae elit libero, a pharetra augue mollis interdum.
-								</p>
+								<h3>Burger & French Fries</h3>
+								<p>Most Favorite Fast Food in World.</p>
 							</Carousel.Caption>
 						</Carousel.Item>
 						<Carousel.Item>
 							<img className="d-block w-100 rounded-2" src={Slide2} />
 
 							<Carousel.Caption>
-								<h3>Second slide label</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+								<h3>French Fries</h3>
+								<p>Most Favorite Fast Food in World.</p>
 							</Carousel.Caption>
 						</Carousel.Item>
 						<Carousel.Item>
@@ -39,11 +37,8 @@ const Carousels = () => {
 							/>
 
 							<Carousel.Caption>
-								<h3 className="fs-1">Third slide label</h3>
-								<p>
-									Praesent commodo cursus magna, vel scelerisque nisl
-									consectetur.
-								</p>
+								<h3 className="fs-1">vegetables Fish</h3>
+								<p>Most Favorite Fast Food in World</p>
 							</Carousel.Caption>
 						</Carousel.Item>
 					</Carousel>
