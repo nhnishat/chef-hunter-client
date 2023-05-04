@@ -10,6 +10,7 @@ import Register from '../Pages/Register/Register';
 import ShowChef from '../Pages/ShowChef/ShowChef';
 import Trams from '../Pages/Trams/Trams';
 import Error from '../Share/Error/Error';
+import PrivateRoute from './Private/PrivateRoute';
 const Routers = createBrowserRouter([
 	{
 		path: '/',
@@ -40,16 +41,21 @@ const Routers = createBrowserRouter([
 				path: 'about',
 				element: <About />,
 			},
+			{
+				path: 'chef',
+				element: <ShowChef />,
+			},
+			{
+				path: 'chef/:id',
+				element: (
+					<PrivateRoute>
+						<Chef />
+					</PrivateRoute>
+				),
+				loader: ({ params }) =>
+					fetch(`http://localhost:5000/chef/${params.id}`),
+			},
 		],
-	},
-	{
-		path: 'chef',
-		element: <ShowChef />,
-	},
-	{
-		path: 'chef/:id',
-		element: <Chef />,
-		loader: ({ params }) => fetch(`http://localhost:5000/chef/${params.id}`),
 	},
 ]);
 

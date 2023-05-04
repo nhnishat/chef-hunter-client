@@ -3,13 +3,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext, useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from '../../Auth/AuthProvider';
 
 const Register = () => {
 	const [accepted, setAccepted] = useState(false);
 	const [showPassword, setShowPassword] = useState(false);
 	const [error, setError] = useState('');
-	const { createUser, currentUser, updateProfileData } =
+	const { createUser, updateProfileData, googleSingIn, githubSingIn } =
 		useContext(AuthContext);
 	const handleRegister = (event) => {
 		event.preventDefault();
@@ -29,9 +31,30 @@ const Register = () => {
 				setError('');
 				updateUserData(result.user, name, photo);
 				console.log(createdUser);
+				toast('register success');
 			})
 			.catch((error) => {
 				setError(error.message);
+			});
+	};
+	const handleGoogleSingIn = () => {
+		googleSingIn()
+			.then((result) => {
+				const loggedUser = result.user;
+				console.log(loggedUser);
+			})
+			.catch((error) => {
+				setError(error);
+			});
+	};
+	const handleGithubSingIn = () => {
+		githubSingIn()
+			.then((result) => {
+				const loggedUser = result.user;
+				console.log(loggedUser);
+			})
+			.catch((error) => {
+				setError(error);
 			});
 	};
 	const updateUserData = (user, name, photo) => {
@@ -131,7 +154,7 @@ const Register = () => {
 					</Link>
 				</p>
 				<div className="my-4">
-					<Button variant="dark">
+					<Button onClick={handleGoogleSingIn} variant="dark">
 						<img
 							className="me-2"
 							src="https://i.ibb.co/ZdHLMqw/google-logo-png-2015-10-285463384.png"
@@ -142,7 +165,7 @@ const Register = () => {
 					</Button>
 				</div>
 				<div>
-					<Button variant="dark">
+					<Button onClick={handleGithubSingIn} variant="dark">
 						<img
 							className="me-2"
 							src="https://i.ibb.co/pyzt6Rb/github-PNG40-3901690518.png"
@@ -152,6 +175,7 @@ const Register = () => {
 						Sing up With Github
 					</Button>
 				</div>
+				<ToastContainer />
 			</Form>
 		</Container>
 	);

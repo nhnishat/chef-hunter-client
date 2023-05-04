@@ -2,21 +2,29 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext, useRef, useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from '../../Auth/AuthProvider';
 
 const LogIn = () => {
-	const { singIn, resetPassword } = useContext(AuthContext);
+	const { singIn, resetPassword, googleSingIn, githubSingIn } =
+		useContext(AuthContext);
 	const [showPassword, setShowPassword] = useState(false);
 	const [error, setError] = useState('');
 	const emailRef = useRef();
 
+	const navigate = useNavigate();
+	const location = useLocation();
+	console.log(location);
+	const from = location.state?.from?.pathname || '/';
+
 	const handleLogIn = (event) => {
 		event.preventDefault();
 		const form = event.target;
-		// const name = form.name.value;
+
 		const email = form.email.value;
-		// const photo = form.photo.value;
+
 		const password = form.password.value;
 		console.log(email, password);
 		if (password.length < 6) {
@@ -27,7 +35,9 @@ const LogIn = () => {
 				const createdUser = result.user;
 				form.reset();
 				setError('');
+				toast('Login success');
 				console.log(createdUser);
+				navigate(from, { replace: true });
 			})
 			.catch((error) => {
 				setError(error.message);
@@ -44,6 +54,30 @@ const LogIn = () => {
 			})
 			.catch((error) => {
 				setError(error.message);
+			});
+	};
+	const handleGoogleSingIn = () => {
+		googleSingIn()
+			.then((result) => {
+				const loggedUser = result.user;
+				console.log(loggedUser);
+				toast('Login success');
+				navigate(from, { replace: true });
+			})
+			.catch((error) => {
+				setError(error);
+			});
+	};
+	const handleGithubSingIn = () => {
+		githubSingIn()
+			.then((result) => {
+				const loggedUser = result.user;
+				console.log(loggedUser);
+				toast('Login success');
+				navigate(from, { replace: true });
+			})
+			.catch((error) => {
+				setError(error);
 			});
 	};
 
@@ -100,7 +134,7 @@ const LogIn = () => {
 					</Link>
 				</p>
 				<div className="my-4">
-					<Button variant="dark">
+					<Button onClick={handleGoogleSingIn} variant="dark">
 						<img
 							className="me-2"
 							src="https://i.ibb.co/ZdHLMqw/google-logo-png-2015-10-285463384.png"
@@ -111,7 +145,7 @@ const LogIn = () => {
 					</Button>
 				</div>
 				<div>
-					<Button variant="dark">
+					<Button onClick={handleGithubSingIn} variant="dark">
 						<img
 							className="me-2"
 							src="https://i.ibb.co/pyzt6Rb/github-PNG40-3901690518.png"
@@ -121,6 +155,7 @@ const LogIn = () => {
 						Sing up With Github
 					</Button>
 				</div>
+				<ToastContainer />
 			</Form>
 		</Container>
 	);

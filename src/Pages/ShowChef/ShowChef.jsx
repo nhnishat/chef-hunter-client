@@ -13,7 +13,9 @@ const ShowChef = () => {
 	return (
 		<Container>
 			<div className="text-center my-5 p-5">
-				<h1 className="fs-2 fw-bold">Cards</h1>
+				<h1 className="fs-2 fw-bold text-uppercase text-secondary">
+					All <span className="text-warning">Chefs</span> Here
+				</h1>
 				<p>
 					<small className="fw-semibold">
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.

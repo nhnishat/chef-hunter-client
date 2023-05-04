@@ -1,8 +1,11 @@
-import { Card, Col, Container, Row, Spinner } from 'react-bootstrap';
+import { useState } from 'react';
+import { Button, Card, Col, Container, Row, Spinner } from 'react-bootstrap';
 import { useLoaderData } from 'react-router-dom';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Chef = () => {
 	const chef = useLoaderData();
+	const [isFavoriteAdded, setIsFavoriteAdded] = useState(false);
 	console.log(chef);
 	if (!chef) {
 		return (
@@ -13,6 +16,10 @@ const Chef = () => {
 			/>
 		);
 	}
+	const handleFavorite = () => {
+		toast('Added to Favorites!');
+		setIsFavoriteAdded(true);
+	};
 	return (
 		<Container>
 			<h3 className="text-center my-5">{chef.name} Data</h3>
@@ -33,7 +40,7 @@ const Chef = () => {
 					</p>
 					<p>
 						<span className="fw-bold">Experience : </span>
-						<small>{chef.yearsOfExperience}</small>
+						<small>{chef.yearsOfExperience} years</small>
 					</p>
 					<p>
 						<span className="fw-bold">Likes :</span> {chef.likes}
@@ -44,23 +51,48 @@ const Chef = () => {
 				</div>
 			</div>
 
-			<Row xs={1} md={3} className="g-4 my-5">
-				{chef.recipes.map((recipe) => (
-					<Col key={recipe.id}>
-						<Card>
-							<Card.Img
-								variant="top"
-								className="img-fluid"
-								src={recipe}
-								style={{ height: '500px', width: '500px' }}
-							/>
-							<Card.Body>
-								<Card.Title>{recipe.recipeName}</Card.Title>
-							</Card.Body>
-						</Card>
-					</Col>
-				))}
-			</Row>
+			<div>
+				<h3 className="my-5 text-center text-decoration-underline">
+					Recipes Here
+				</h3>
+				<Row xs={1} md={3} className="g-4 my-5">
+					{chef.recipes.map((recipe) => (
+						<Col key={recipe.id}>
+							<Card>
+								<Card.Img
+									variant="top"
+									className="img-fluid"
+									src={recipe.photoUrl}
+									style={{ height: '500px', width: '500px' }}
+								/>
+								<Card.Body>
+									<Card.Title>{recipe.recipeName}</Card.Title>
+									<div className="mt-3">
+										<h4 className="fs-5">ingredients</h4>
+										<ul>
+											<li className="fw-semibold">
+												Name : {chef.ingredients.name}
+											</li>
+											<li className="fw-semibold">
+												Amount : {chef.ingredients.amount}
+											</li>
+										</ul>
+										<Button
+											onClick={handleFavorite}
+											variant="dark"
+											className="w-full"
+											disabled={isFavoriteAdded}
+										>
+											Add Favorite Recipe
+										</Button>
+										<ToastContainer />
+									</div>
+								</Card.Body>
+							</Card>
+						</Col>
+					))}
+				</Row>
+			</div>
 		</Container>
 	);
 };
