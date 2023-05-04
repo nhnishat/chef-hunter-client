@@ -49,7 +49,7 @@ const LogIn = () => {
 
 	return (
 		<Container className="mx-auto mt-5 p-5">
-			<h1 className="mb-4 text-center">Log in</h1>
+			<h1 className="mb-4 text-center">Login Now</h1>
 			<Form onSubmit={handleLogIn}>
 				<Form.Group className="mb-3" controlId="formBasicEmail">
 					<Form.Label>Email address</Form.Label>
@@ -93,13 +93,35 @@ const LogIn = () => {
 				<Button variant="primary" type="submit" className="my-2">
 					Login
 				</Button>
+				<p>
+					Dont’t have an Account ?
+					<Link to="/register" className="text-danger ms-2">
+						Register
+					</Link>
+				</p>
+				<div className="my-4">
+					<Button variant="dark">
+						<img
+							className="me-2"
+							src="https://i.ibb.co/ZdHLMqw/google-logo-png-2015-10-285463384.png"
+							alt=""
+							style={{ height: '25px', width: '25px' }}
+						/>
+						Sing up With Google
+					</Button>
+				</div>
+				<div>
+					<Button variant="dark">
+						<img
+							className="me-2"
+							src="https://i.ibb.co/pyzt6Rb/github-PNG40-3901690518.png"
+							alt=""
+							style={{ height: '30px', width: '30px' }}
+						/>
+						Sing up With Github
+					</Button>
+				</div>
 			</Form>
-			<p>
-				Dont’t Have An Account ?
-				<Link to="/register" className="text-danger ms-2">
-					Register
-				</Link>
-			</p>
 		</Container>
 	);
 };

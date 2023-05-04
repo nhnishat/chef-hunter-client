@@ -22,14 +22,21 @@ const Header = () => {
 			className="shadow-lg"
 		>
 			<Container>
-				<Link to="/" className="text-white text-decoration-none">
+				<Link to="/" className="text-white text-decoration-none fs-2">
 					CHEF HUNTER
 				</Link>
 				<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 				<Navbar.Collapse id="responsive-navbar-nav">
 					<Nav className="ms-auto" style={{ marginRight: '470px' }}>
-						<Nav.Link to="/">About</Nav.Link>
-						<Nav.Link to="/">Blogs</Nav.Link>
+						<Link to="/" className="text-white text-decoration-none">
+							Home
+						</Link>
+						<Link to="/about" className="text-white text-decoration-none mx-4">
+							About
+						</Link>
+						<Link to="/blog" className="text-white text-decoration-none">
+							Blogs
+						</Link>
 					</Nav>
 					<Nav>
 						<div>

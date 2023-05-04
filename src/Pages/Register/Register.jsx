@@ -125,11 +125,33 @@ const Register = () => {
 					Register
 				</Button>
 				<p>
-					Already Have An Account ?
+					Already have an Account ?
 					<Link to="/login" className="text-danger ms-2">
 						Login
 					</Link>
 				</p>
+				<div className="my-4">
+					<Button variant="dark">
+						<img
+							className="me-2"
+							src="https://i.ibb.co/ZdHLMqw/google-logo-png-2015-10-285463384.png"
+							alt=""
+							style={{ height: '25px', width: '25px' }}
+						/>
+						Sing up With Google
+					</Button>
+				</div>
+				<div>
+					<Button variant="dark">
+						<img
+							className="me-2"
+							src="https://i.ibb.co/pyzt6Rb/github-PNG40-3901690518.png"
+							alt=""
+							style={{ height: '30px', width: '30px' }}
+						/>
+						Sing up With Github
+					</Button>
+				</div>
 			</Form>
 		</Container>
 	);

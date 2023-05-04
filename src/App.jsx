@@ -9,8 +9,6 @@ const App = () => {
 	console.log(currentUser);
 	return (
 		<div>
-			{/* <h1>{currentUser && currentUser.displayName} </h1> */}
-			{/* <img src={currentUser.photoURL} alt="" /> */}
 			<Header />
 			<Outlet />
 			<Footer />

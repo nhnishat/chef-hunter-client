@@ -9,6 +9,7 @@ const HomeLayout = () => {
 			<Carousels />
 			<ChefSection />
 			<ShowChef />
+			{/* <Chef /> */}
 		</>
 	);
 };
