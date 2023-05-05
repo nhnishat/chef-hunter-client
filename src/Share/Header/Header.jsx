@@ -32,7 +32,7 @@ const Header = () => {
 							Home
 						</Link>
 						<Link to="/chef" className="text-white text-decoration-none mx-4">
-							Chef
+							Chefs
 						</Link>
 						<Link to="/blog" className="text-white text-decoration-none">
 							Blogs

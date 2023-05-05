@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Card, Col, Container, Row, Spinner } from 'react-bootstrap';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useLoaderData } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -22,7 +23,7 @@ const Chef = () => {
 	};
 	return (
 		<Container>
-			<h3 className="text-center my-5">{chef.name} BIO DATA</h3>
+			<h3 className="text-center my-5">{chef.name} Information</h3>
 			<div className="d-flex flex-column flex-sm-row justify-content-center align-items-center mt-4 gap-5 justify-content-between shadow-lg rounded-3 mt-5">
 				<div>
 					<img
@@ -59,12 +60,12 @@ const Chef = () => {
 					{chef.recipes.map((recipe) => (
 						<Col key={recipe.id}>
 							<Card>
-								<Card.Img
+								<LazyLoadImage
 									variant="top"
 									className="img-fluid"
 									src={recipe.photoUrl}
 									style={{ height: '500px', width: '500px' }}
-								/>
+								></LazyLoadImage>
 								<Card.Body>
 									<Card.Title>{recipe.recipeName}</Card.Title>
 									<div className="mt-3">

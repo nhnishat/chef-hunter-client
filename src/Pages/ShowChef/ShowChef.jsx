@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Link } from 'react-router-dom';
 
 const ShowChef = () => {
@@ -28,12 +29,12 @@ const ShowChef = () => {
 					{chefInfo.map((chef) => (
 						<Col key={chef.id}>
 							<Card>
-								<Card.Img
+								<LazyLoadImage
 									variant="top"
 									className="img-fluid"
 									src={chef.picture}
 									style={{ height: '500px', width: '500px' }}
-								/>
+								></LazyLoadImage>
 
 								<Card.Body>
 									<Card.Title>{chef.name}</Card.Title>
