@@ -20,10 +20,10 @@ I'm create a beauty full website chef hunter
 
 ### Hosting site Link
 
-firebase Hosting Link :-
+firebase Hosting Link :- https://chef-hunter-clientsite.web.app/
 
 ### Github Server and Client site Link
 
-ServerLink :-
+Server Link :-https://github.com/programming-hero-web-course-4/b7a10-chef-recipe-hunter-server-side-nhnishat
 
-Client Link :-
+Client Link :-https://github.com/programming-hero-web-course-4/b7a10-chef-recipe-hunter-client-side-nhnishat
